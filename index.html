@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard Indonesia</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <h1>🌤️ Weather Dashboard Indonesia</h1>
+                <div class="header-controls">
+                    <button class="btn-refresh" id="refreshBtn" title="Refresh weather data">
+                        <span class="refresh-icon">↻</span>
+                    </button>
+                    <button class="btn-theme" id="themeBtn" title="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="btn-temp-toggle" id="unitBtn" title="Toggle temperature unit">
+                        <span class="temp-unit">°C / °F</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input id="searchInput" class="search-input" placeholder="Cari kota Indonesia..." autocomplete="off" />
+                <button id="searchBtn" class="btn-search">Search</button>
+
+                <ul id="suggestions" class="autocomplete-list"></ul>
+            </div>
+
+            <div id="error" class="error-message"></div>
+
+            <div class="favorites-section">
+                <h3>Favorite Kota</h3>
+                <div class="favorites-list" id="favoriteList">
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <section class="weather-primary card">
+                <div class="location-time">
+                    <h2 id="cityName">--</h2>
+                    <button class="btn-favorite" id="favBtn" title="Add to favorites">
+                        <span class="favorite-icon">⭐</span>
+                    </button>
+                    <p id="timestamp">--</p>
+                </div>
+                <div class="coordinates">
+                    Koordinat: <span id="coords">--</span>
+                </div>
+
+                <div class="temperature">
+                    <span id="temp" class="temp-value">--</span>
+                    <div id="condition" class="weather-description">--</div>
+                </div>
+
+            </section>
+
+            <section class="weather-secondary card">
+                <h3>Today's Details</h3>
+                <div class="weather-details detail-wind-only">
+                    <div class="detail-card">
+                        <span class="detail-icon">💧</span>
+                        <div class="detail-info">
+                            <span class="detail-label">Humidity</span>
+                            <span id="humidity" class="detail-value">-</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-icon">💨</span>
+                        <div class="detail-info">
+                            <span class="detail-label">Wind Speed</span>
+                            <span id="wind" class="detail-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="forecast-section card">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-grid" id="forecastList">
+                </div>
+            </section>
+
+            <section class="map-section card">
+                <h3>Peta Lokasi</h3>
+                <div id="map" class="map-container"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Weather data powered by Open-Meteo API & Leaflet</p>
+        </footer>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
